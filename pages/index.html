@@ -98,29 +98,18 @@
                         <div class="panel-heading">Patient Profile</div>
                         <div class="panel-body">
                             <img class="img-responsive center-block" src="../img/JaneGriffin.jpg"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Patient Information</div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table" id="personalTable"></table>
                             </div>
-                            <!-- /.table-responsive -->
                         </div>
-                        <!-- /.panel-body -->
+
                     </div>
-                    <!-- /.panel -->
                 </div>
                 <div class="col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Notifications Panel
                         </div>
-                        <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
                                 <div class="alert alert-danger alert-dismissable">
@@ -130,33 +119,30 @@
                                 </div>
                                 <div class="alert alert-warning alert-dismissable">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    Suspected Cerebrovascular Accident
-                                    <span class="pull-right text-muted small">September 12, 2015</span>
+                                    Dysphagia
+                                    <span class="pull-right text-muted small">September 5, 2015</span>
                                 </div>
-                                <div class="alert alert-info alert-dismissable">
+                                <div class="alert alert-warning alert-dismissable">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                     Aphasia
                                     <span class="pull-right text-muted small">September 5, 2015</span>
                                 </div>
+                                <div class="panel panel-yellow">
+                                    <div class="panel-heading">
+                                        Risk Assessment
+                                    </div>
+                                    <div class="panel-body">
+                                        <button type="button" class="btn btn-default btn-xs">Fall Risk:</button>
+                                        <button type="button" class="btn btn-xs btn-danger">HIGH</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.panel-body -->
                     </div>
                 </div>
+
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Patient Information</div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                        Test
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">Patient Body</div>
@@ -165,17 +151,19 @@
                             <li><b>Black: </b> Objective Assessment (per physician)</li>
                             <li><b>Blue: </b> Subjective Assessment (per patient)</li>">
                             <img class="img-responsive center-block" src="../img/body.png"/>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">Patient Video</div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6bP0t6rPWPo" frameborder="0" allowfullscreen>
-                        </iframe>
+                        <center>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/6bP0t6rPWPo" frameborder="0" allowfullscreen>
+                            </iframe>
+                        </center>
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.panel-body -->
@@ -288,7 +276,7 @@
   $(document).ready(function() {
     $.getJSON("https://pure-garden-48064.herokuapp.com/patient", function(json){
         var patientMatrix = [[json["First Name"], json["Last Name"], json["Gender"], json["Age"] + "", json["Birthday"]]];
-        var patientColumn = [{ title: "First Name" }, { title: "Last Name" }, { title: "Gender" }, { title: "Age" }, { title: "Birthday" }];
+        var patientColumn = [{ title: "First" }, { title: "Last" }, { title: "Gender" }, { title: "Age" }, { title: "Birthday" }];
 
         $('#personalTable').DataTable( {
             data: patientMatrix,

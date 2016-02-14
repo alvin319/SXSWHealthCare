@@ -117,51 +117,91 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                             <i class="fa"></i> CBC
+                         </div>
+                         <!-- /.panel-heading -->
+                         <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="resultDataTable">
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
                 </div>
-                <!-- /.row -->
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                         <i class="fa"></i> RBC
+                     </div>
+                     <div class="panel-body">
+                        <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" style="width:40%">
+                            Low RBC
+                        </div>
+                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:10%">
+                            Warning
+                        </div>
+                        <div class="progress-bar progress-bar-danger" role="progressbar" style="width:50%">
+                            Danger
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.container-fluid -->
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
 
-    <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+</div>
+<!-- /#wrapper -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
 
 
-    <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
-    <script src="../dist/js/nvtooltip.js"></script>
-    <script src="../dist/js/d3legend.js"></script> 
-    <script src="../dist/js/d3line.js"></script> 
-    <script src="../dist/js/d3linewithlegend.js"></script> 
-    <script>
-      $(document).ready(function() {
-        var margin = {top: 0, right: 0, bottom: 0, left: 0},
-        chart = d3LineWithLegend()
-        .xAxis.label('Appointment')
-        .width(getWidth())
-        .height(getHeight())
-        .yAxis.label('Blood Pressure (mmHg)');
+<!-- DataTables JavaScript -->
+<script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
-        var svg = d3.select('#d3bloodpressure svg')
-        .datum(generateData())
-        svg.transition().duration(500)
-        .attr('width', getWidth())
-        .attr('height', getHeight())
-        .call(chart);
+<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+<script src="../dist/js/nvtooltip.js"></script>
+<script src="../dist/js/d3legend.js"></script> 
+<script src="../dist/js/d3line.js"></script> 
+<script src="../dist/js/d3linewithlegend.js"></script> 
+<script>
+  $(document).ready(function() {
+    var margin = {top: 0, right: 0, bottom: 0, left: 0},
+    chart = d3LineWithLegend()
+    .xAxis.label('Appointment')
+    .width(getWidth())
+    .height(getHeight())
+    .yAxis.label('Blood Pressure (mmHg)');
 
-        chart.dispatch.on('showTooltip', function(e) {
+    var svg = d3.select('#d3bloodpressure svg')
+    .datum(generateData())
+    svg.transition().duration(500)
+    .attr('width', getWidth())
+    .attr('height', getHeight())
+    .call(chart);
+
+    chart.dispatch.on('showTooltip', function(e) {
             var offset = $('#d3bloodpressure').offset(), // { left: 0, top: 0 }
             left = e.pos[0] + offset.left,
             top = e.pos[1] + offset.top,
@@ -176,30 +216,30 @@
             nvtooltip.show([left, top], content);
         });
 
-        chart.dispatch.on('hideTooltip', function(e) {
-            nvtooltip.cleanup();
-        });
+    chart.dispatch.on('hideTooltip', function(e) {
+        nvtooltip.cleanup();
+    });
 
-        $(window).resize(function() {
-            var margin = chart.margin();
+    $(window).resize(function() {
+        var margin = chart.margin();
 
-            chart
-            .width(getWidth())
-            .height(getHeight());
+        chart
+        .width(getWidth())
+        .height(getHeight());
 
-            d3.select('#d3bloodpressure svg')
-            .attr('width', getWidth())
-            .attr('height', getHeight())
-            .call(chart);
-        });
+        d3.select('#d3bloodpressure svg')
+        .attr('width', getWidth())
+        .attr('height', getHeight())
+        .call(chart);
+    });
 
-        function getWidth() {
-            return 1100;
-        }
+    function getWidth() {
+        return 1100;
+    }
 
-        function getHeight() {
-            return 500;
-        }
+    function getHeight() {
+        return 500;
+    }
 
         // populating data
         function generateData() {
@@ -308,6 +348,38 @@
             label: "HDL"
         }];
     }});
+
+      $(document).ready(function() {
+        $.getJSON("https://pure-garden-48064.herokuapp.com/observations", function(json) {
+            var resultMatrix = []
+            for(i = 0; i < json.Observations.length; i++) {
+                var temp = []
+                var oCategory = json.Observations[i].ObservationCategory;
+                if(oCategory == "Medical") {
+                    var oDetails = json.Observations[i].ObservationDetails;
+                    if(oDetails == "Hemoglobin [Mass/​volume] in Blood" || oDetails == "Red blood cells (RBC) in blood" || oDetails == "White blood cells (WBC) in blood") {
+                        temp.push(oDetails);
+                        var oMeasurements = json.Observations[i].Measurements;
+                        if(oMeasurements != "N/A") {
+                            for(j = 0; j < oMeasurements.length; j++) {
+                                temp.push(oMeasurements[j].Measurement);
+                                temp.push(oMeasurements[j].Unit);
+                                temp.push(oMeasurements[j].Value);
+                            }
+                        }
+                        resultMatrix.push(temp);
+                    }
+                }
+            }
+            var resultColumn = [{ title: "Medical Detail" }, { title: "Measurement" }, { title: "Unit" }, { title: "Value" }]
+
+            $('#resultDataTable').DataTable({
+                data: resultMatrix,
+                columns: resultColumn,
+                "responsive": true
+            })
+        });
+    });
 </script>
 
 </body>

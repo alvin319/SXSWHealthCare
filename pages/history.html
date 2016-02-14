@@ -171,49 +171,6 @@
                   });
                 });
 
-
-                      // $(document).ready(function() {
-                      //   $.getJSON("https://pure-garden-48064.herokuapp.com/observations", function(json) {
-                      //       var historyMatrix = []
-                      //       for(i = 0; i < json.Observations.length; i++) {
-                      //           var temp = []
-                      //           var oCategory = json.Observations[i].ObservationCategory;
-                      //           if(oCategory == "Medical") {
-                      //               var oDetails = json.Observations[i].ObservationDetails;
-                      //               temp.push(oDetails);
-                      //               var oMeasurements = json.Observations[i].Measurements;
-                      //               if(oMeasurements != "N/A") {
-                      //                   for(j = 0; j < oMeasurements.length; j++) {
-                      //                       if(j == 0) {
-                      //                           temp.push(oMeasurements[j].Measurement);
-                      //                           temp.push(oMeasurements[j].Unit);
-                      //                           temp.push(oMeasurements[j].Value);
-                      //                       } else {
-                      //                           var nextTemp = [];
-                      //                           nextTemp.push(oDetails);
-                      //                           nextTemp.push(oMeasurements[j].Measurement);
-                      //                           nextTemp.push(oMeasurements[j].Unit);
-                      //                           nextTemp.push(oMeasurements[j].Value);
-                      //                           historyMatrix.push(nextTemp);
-                      //                       }
-                      //                   }
-                      //               } else {
-                      //                   temp.push("Not Available");
-                      //                   temp.push("Not Available");
-                      //                   temp.push("Not Available");
-                      //               }
-                      //               historyMatrix.push(temp);
-                      //           }
-                      //       }
-                      //       var historyColumn = [{ title: "Medical Detail" }, { title: "Measurement" }, { title: "Unit" }, { title: "Value" }]
-
-                      //       $('#historyDataTable').DataTable({
-                      //           data: historyMatrix,
-                      //           columns: historyColumn,
-                      //           "responsive": true
-                      //       })
-                      //   });
-                      // });
                     </script>
 
                   </body>
