@@ -122,7 +122,7 @@ function d3LineWithLegend() {
       xAxisLabel.enter().append('text').attr('class', 'axislabel')
           .attr('text-anchor', 'middle')
           .attr('x', x.range()[1] / 2)
-          .attr('y', margin.bottom - 20);
+          .attr('y', margin.bottom - 5);
       xAxisLabel.exit().remove();
       xAxisLabel.text(function(d) { return d });
 

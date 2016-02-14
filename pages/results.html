@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Insert Name Here</title>
+    <title>MediSync</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +36,6 @@
     </head>
 
     <body>
-
         <div id="wrapper">
 
             <!-- Navigation -->
@@ -48,7 +47,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Insert Name Here</a>
+                    <a class="navbar-brand" href="index.html">MediSync</a>
                 </div>
 
                 <div class="navbar-default sidebar" role="navigation">
@@ -95,126 +94,136 @@
                         <!-- /.col-lg-12 -->
                     </div>
                     <div class="row">
-                        <div id="d3results">
-                            <svg></svg>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i></i> Blood Pressure
+                            </div>
+                            <!-- /.panel-heading -->
+
+                            <div id="d3bloodpressure">
+                                <svg></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i></i> Blood Pressure
+                            </div>
+                            <!-- /.panel-heading -->
+
+                            <div id="d3cholesterol">
+                                <svg></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-                  <!-- /.row -->
-              </div>
-              <!-- /.container-fluid -->
-          </div>
-          <!-- /#page-wrapper -->
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
 
-      </div>
-      <!-- /#wrapper -->
+    </div>
+    <!-- /#wrapper -->
 
-      <!-- jQuery -->
-      <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-      <!-- Bootstrap Core JavaScript -->
-      <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-      <!-- Metis Menu Plugin JavaScript -->
-      <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-      <!-- Custom Theme JavaScript -->
-      <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
 
 
-      <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
-      <script src="../dist/js/nvtooltip.js"></script>
-      <script src="../dist/js/d3legend.js"></script> 
-      <script src="../dist/js/d3line.js"></script> 
-      <script src="../dist/js/d3linewithlegend.js"></script> 
-      <script>
-          $(document).ready(function() {
-            var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            chart = d3LineWithLegend()
-            .xAxis.label('Time (ms)')
-            .width(getWidth())
-            .height(getHeight())
-            .yAxis.label('Voltage (v)');
+    <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+    <script src="../dist/js/nvtooltip.js"></script>
+    <script src="../dist/js/d3legend.js"></script> 
+    <script src="../dist/js/d3line.js"></script> 
+    <script src="../dist/js/d3linewithlegend.js"></script> 
+    <script>
+      $(document).ready(function() {
+        var margin = {top: 0, right: 0, bottom: 0, left: 0},
+        chart = d3LineWithLegend()
+        .xAxis.label('Appointment')
+        .width(getWidth())
+        .height(getHeight())
+        .yAxis.label('Blood Pressure (mmHg)');
 
-            var svg = d3.select('#d3results svg')
-            .datum(generateData())
-            svg.transition().duration(500)
-            .attr('width', getWidth())
-            .attr('height', getHeight())
-            .call(chart);
+        var svg = d3.select('#d3bloodpressure svg')
+        .datum(generateData())
+        svg.transition().duration(500)
+        .attr('width', getWidth())
+        .attr('height', getHeight())
+        .call(chart);
 
-            chart.dispatch.on('showTooltip', function(e) {
-            var offset = $('#d3results').offset(), // { left: 0, top: 0 }
+        chart.dispatch.on('showTooltip', function(e) {
+            var offset = $('#d3bloodpressure').offset(), // { left: 0, top: 0 }
             left = e.pos[0] + offset.left,
             top = e.pos[1] + offset.top,
             formatter = d3.format(".04f");
 
+            var dateData = ["Jan 2011", "July 2011", "Jan 2012", "July 2012", "Jan 2013", "July 2013", "Jan 2014", "July 2014", "Jan 2015", "July 2015"]
+
             var content = '<h3>' + e.series.label + '</h3>' +
             '<p>' +
-            '<span class="value">[' + e.point[0] + ', ' + formatter(e.point[1]) + ']</span>' +
+            '<span class="value">[' + dateData[e.point[0] - 1] + ', ' + formatter(e.point[1]) + ']</span>' +
             '</p>';
             nvtooltip.show([left, top], content);
         });
 
-            chart.dispatch.on('hideTooltip', function(e) {
-                nvtooltip.cleanup();
-            });
+        chart.dispatch.on('hideTooltip', function(e) {
+            nvtooltip.cleanup();
+        });
 
-            $(window).resize(function() {
-                var margin = chart.margin();
+        $(window).resize(function() {
+            var margin = chart.margin();
 
-                chart
-                .width(getWidth())
-                .height(getHeight());
+            chart
+            .width(getWidth())
+            .height(getHeight());
 
-                d3.select('#d3results svg')
-                .attr('width', getWidth())
-                .attr('height', getHeight())
-                .call(chart);
-            });
+            d3.select('#d3bloodpressure svg')
+            .attr('width', getWidth())
+            .attr('height', getHeight())
+            .call(chart);
+        });
 
         function getWidth() {
             return 1100;
         }
 
         function getHeight() {
-            return 800;
+            return 500;
         }
 
         // populating data
         function generateData() {
-            var sin = [],
-            sin2 = [],
-            cos = [],
-            cos2 = [],
-            r1 = Math.random(),
-            r2 = Math.random(),
-            r3 = Math.random(),
-            r4 = Math.random();
 
-            for (var i = 0; i < 20; i++) {
-              sin.push([ i, r1 * Math.sin( r2 +  i / (10 * (r4 + .5) ))]);
-              cos.push([ i, r2 * Math.cos( r3 + i / (10 * (r3 + .5) ))]);
-              sin2.push([ i, r3 * Math.sin( r1 + i / (10 * (r2 + .5) ))]);
-              cos2.push([ i, r4 * Math.cos( r4 + i / (10 * (r1 + .5) ))]);
+            var diastolic = [77, 79, 82, 80, 79, 82, 83, 83, 85, 84]
+            var diastolicData = []
+
+            var systolic = [125, 126, 127, 126, 125, 126, 128, 129, 130, 130]
+            var systolicData = []
+
+
+            for (var i = 1; i <= 10; i++) {
+              diastolicData.push([i, diastolic[i]]);
+              systolicData.push([i, systolic[i]]);
           }
 
           return [
           {
-            data: sin,
-            label: "Sine Wave"
+            data: systolicData,
+            label: "Systolic"
         },
         {
-            data: cos,
-            label: "Cosine Wave"
-        },
-        {
-            data: sin2,
-            label: "Sine2 Wave"
-        },
-        {
-            data: cos2,
-            label: "Cosine2 Wave"
+            data: diastolicData,
+            label: "Diastolic"
         }];
     }});
 </script>
