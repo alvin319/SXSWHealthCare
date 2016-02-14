@@ -108,7 +108,7 @@
                     <div class="row">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i></i> Blood Pressure
+                                <i></i> Cholesterol
                             </div>
                             <!-- /.panel-heading -->
 
@@ -224,6 +224,88 @@
         {
             data: diastolicData,
             label: "Diastolic"
+        }];
+    }});
+
+      // Another graph
+      $(document).ready(function() {
+        var margin = {top: 0, right: 0, bottom: 0, left: 0},
+        chart = d3LineWithLegend()
+        .xAxis.label('Appointment')
+        .width(getWidth())
+        .height(getHeight())
+        .yAxis.label('Cholesterol (mg/dl)');
+
+        var svg = d3.select('#d3cholesterol svg')
+        .datum(generateData())
+        svg.transition().duration(500)
+        .attr('width', getWidth())
+        .attr('height', getHeight())
+        .call(chart);
+
+        chart.dispatch.on('showTooltip', function(e) {
+            var offset = $('#d3cholesterol').offset(), // { left: 0, top: 0 }
+            left = e.pos[0] + offset.left,
+            top = e.pos[1] + offset.top,
+            formatter = d3.format(".04f");
+
+            var dateData = ["Jan 2011", "July 2011", "Jan 2012", "July 2012", "Jan 2013", "July 2013", "Jan 2014", "July 2014", "Jan 2015", "July 2015"]
+
+            var content = '<h3>' + e.series.label + '</h3>' +
+            '<p>' +
+            '<span class="value">[' + dateData[e.point[0] - 1] + ', ' + formatter(e.point[1]) + ']</span>' +
+            '</p>';
+            nvtooltip.show([left, top], content);
+        });
+
+        chart.dispatch.on('hideTooltip', function(e) {
+            nvtooltip.cleanup();
+        });
+
+        $(window).resize(function() {
+            var margin = chart.margin();
+
+            chart
+            .width(getWidth())
+            .height(getHeight());
+
+            d3.select('#d3cholesterol svg')
+            .attr('width', getWidth())
+            .attr('height', getHeight())
+            .call(chart);
+        });
+
+        function getWidth() {
+            return 1100;
+        }
+
+        function getHeight() {
+            return 500;
+        }
+
+        // populating data
+        function generateData() {
+
+            var LDL = [135, 137, 138, 138, 139, 140, 140, 141, 142, 142]
+            var LDLData = []
+
+            var HDL = [40, 39, 39, 38, 37, 37, 36, 35, 35, 34]
+            var HDLData = []
+
+
+            for (var i = 1; i <= 10; i++) {
+              LDLData.push([i, LDL[i]]);
+              HDLData.push([i, HDL[i]]);
+          }
+
+          return [
+          {
+            data: LDLData,
+            label: "LDL"
+        },
+        {
+            data: HDLData,
+            label: "HDL"
         }];
     }});
 </script>
