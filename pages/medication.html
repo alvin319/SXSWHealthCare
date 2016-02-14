@@ -129,14 +129,37 @@
 
                     <script>
                       $(document).ready(function() {
+
+                          var infoArray = []
+                          function getPractitioner(pracID) {
+
+                            $.ajax({
+                              url: "http://fhir2.healthintersections.com.au/open/Practitioner/" + pracID + "?_format=json",
+                              dataType: 'json',
+                              async: false,
+                              success: function(json) {
+                                var pracName = json.name.given[0] + " " +json.name.family[0] + " " + json.name.suffix[0];
+                                var pracTitle = json.practitionerRole[0].role.coding[0].display;
+                                infoArray = [pracName, pracTitle];
+                            }
+                        });
+                            return infoArray;
+                        }
+
                         $.getJSON("https://pure-garden-48064.herokuapp.com/medications", function(json) {
                             var medicationMatrix = []
                             for(i = 0; i < json.Medications.length; i++) {
                                 var temp = []
+                                var pracOrig = json.Medications[i].PractitionerId;
+                                var pracID = pracOrig.substring(13, pracOrig.length);
+                                var pracArray = getPractitioner(pracID);
+
                                 temp.push(json.Medications[i].PrescriptionDisplay);
-                                medicationMatrix.push(temp)
+                                var combineTemp = temp.concat(pracArray);
+
+                                medicationMatrix.push(combineTemp);
                             }
-                            var medicationColumn = [{ title: "Prescription Name" }]
+                            var medicationColumn = [{ title: "Prescription Name" }, { title: "Provider Name" }, { title: "Provider Role" }]
                             
                             $('#medicationDataTable').DataTable({
                                 data: medicationMatrix,
@@ -144,7 +167,7 @@
                                 "responsive": true
                             })
                         });
-                      });
+                    });
                 </script>
 
             </body>

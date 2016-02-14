@@ -120,10 +120,10 @@
                     <div class="row">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                             <i class="fa"></i> CBC
-                         </div>
-                         <!-- /.panel-heading -->
-                         <div class="panel-body">
+                               <i class="fa"></i> CBC
+                           </div>
+                           <!-- /.panel-heading -->
+                           <div class="panel-body">
                             <div class="dataTable_wrapper">
                                 <table class="table table-striped table-bordered table-hover" id="resultDataTable">
                                 </table>
@@ -136,29 +136,55 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                         <i class="fa"></i> RBC
-                     </div>
-                     <div class="panel-body">
+                           <i class="fa"></i> RBC
+                       </div>
+                       <div class="panel-body">
                         <div class="progress">
-                        <div class="progress-bar progress-bar-danger" role="progressbar" style="width:40%">
-                            Low RBC
+                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width:40%">
+                                Low RBC (0.0 - 4.2)
+                            </div>
+                            <div class="progress-bar progress-bar-success" role="progressbar" style="width:60%">
+                                Normal RBC (> 4.2)
+                            </div>
                         </div>
-                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:10%">
-                            Warning
-                        </div>
-                        <div class="progress-bar progress-bar-danger" role="progressbar" style="width:50%">
-                            Danger
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+                            Current Patient RBC (3.83)</div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <i class="fa"></i> WBC
+                       </div>
+                       <div class="panel-body">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+                                Low WBC (0.0 - 5000)
+                            </div>
+                            <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+                                Normal WBC (5000 - 10000)
+                            </div>
+                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width:40%">
+                                High WBC (> 10000)
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:65%">
+                            Current Patient WBC (12730)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
         </div>
+        <!-- /.container-fluid -->
     </div>
-    <!-- /.row -->
-</div>
-<!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
+    <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->

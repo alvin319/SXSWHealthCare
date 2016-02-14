@@ -275,7 +275,7 @@
 <script>
   $(document).ready(function() {
     $.getJSON("https://pure-garden-48064.herokuapp.com/patient", function(json){
-        var patientMatrix = [[json["First Name"], json["Last Name"], json["Gender"], json["Age"] + "", json["Birthday"]]];
+        var patientMatrix = [[json["First Name"], json["Last Name"], json["Gender"], json["Age"] + "", "11-23-1936"]];
         var patientColumn = [{ title: "First" }, { title: "Last" }, { title: "Gender" }, { title: "Age" }, { title: "Birthday" }];
 
         $('#personalTable').DataTable( {
