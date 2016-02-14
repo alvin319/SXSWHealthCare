@@ -17,13 +17,14 @@
     <!-- MetisMenu CSS -->
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
-    <!-- Timeline CSS -->
-    <link href="../dist/css/timeline.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
     
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="../dist/css/magnific-popup.css">
@@ -32,190 +33,319 @@
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+</head>
 
-    </head>
+<body>
 
-    <body>
+    <div id="wrapper">
 
-        <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Insert Name Here</a>
+            </div>
 
-            <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">Insert Name Here</a>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-file-movie-o fa-fw"></i> My Story</a>
+                        </li>
+                        <li>
+                            <a href="history.html"><i class="fa fa-folder-open-o fa-fw"></i> Health History</a>
+                        </li>
+                        <li>
+                            <a href="medication.html"><i class="fa fa-clock-o fa-fw"></i> Medication History</a>
+                        </li>
+                        <li>
+                            <a href="allergies.html"><i class="fa fa-table fa-fw"></i> Allergies</a>
+                        </li>
+                        <li>
+                            <a href="results.html"><i class="fa fa-line-chart fa-fw"></i> Test Results</a>
+                        </li>
+                        <li>
+                            <a href="scans.html"><i class="fa fa-image fa-fw"></i> Scans</a>
+                        </li>
+                        <li>
+                            <a href="social.html"><i class="fa fa-user fa-fw"></i> Social History</a>
+                        </li>
+                        <li>
+                            <a href="providers.html"><i class="fa fa-heartbeat fa-fw"></i> Providers</a>
+                        </li>
+                    </ul>
                 </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
 
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
-                            <li>
-                                <a href="index.html"><i class="fa fa-file-movie-o fa-fw"></i> My Story</a>
-                            </li>
-                            <li>
-                                <a href="history.html"><i class="fa fa-folder-open-o fa-fw"></i> Health History</a>
-                            </li>
-                            <li>
-                                <a href="medication.html"><i class="fa fa-clock-o fa-fw"></i> Medication History</a>
-                            </li>
-                            <li>
-                                <a href="allergies.html"><i class="fa fa-table fa-fw"></i> Allergies</a>
-                            </li>
-                            <li>
-                                <a href="results.html"><i class="fa fa-line-chart fa-fw"></i> Test Results</a>
-                            </li>
-                            <li>
-                                <a href="scans.html"><i class="fa fa-image fa-fw"></i> Scans</a>
-                            </li>
-                            <li>
-                                <a href="social.html"><i class="fa fa-user fa-fw"></i> Social History</a>
-                            </li>
-                            <li>
-                                <a href="providers.html"><i class="fa fa-heartbeat fa-fw"></i> Providers</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.sidebar-collapse -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">My Story</h1>
                 </div>
-                <!-- /.navbar-static-side -->
-            </nav>
-
-            <div id="page-wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">My Story</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Patient Profile</div>
-                            <div class="panel-body">
-                                <img class="img-responsive center-block" src="../img/JaneGriffin.jpg"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Patient Information</div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table" id="personalTable"></table>
-                                </div>
-                                <!-- /.table-responsive -->
-                            </div>
-                            <!-- /.panel-body -->
-                        </div>
-                        <!-- /.panel -->
-                    </div>
-                    <div class="col-md-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="list-group">
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        Subdural Hematoma (Intracranial); Loss of Consciousness.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.panel-body -->
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Patient Profile</div>
+                        <div class="panel-body">
+                            <img class="img-responsive center-block" src="../img/JaneGriffin.jpg"/>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">My Body</div>
-                            <div class="panel-body">
-                                <a class="image-popup-vertical-fit" href="../img/body.png" title="<b>Test123</b>">
-                                    <img class="img-responsive center-block" src="../img/body.png"/>
-                                </a>
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Patient Information</div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table" id="personalTable"></table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Patient Information</div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table" id="personalTable2"></table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Patient Body</div>
+                        <div class="panel-body">
+                            <a class="image-popup-vertical-fit" href="../img/body.png" title="
+                            <li><b>Black: </b> Objective Assessment (per physician)</li>
+                            <li><b>Blue: </b> Subjective Assessment (per patient)</li>">
+                            <img class="img-responsive center-block" src="../img/body.png"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <div class="alert alert-danger alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                Subdural Hematoma (Intracranial); Loss of Consciousness
+                                <span class="pull-right text-muted small">September 13, 2015</span>
+                            </div>
+                            <div class="alert alert-warning alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                Suspected Cerebrovascular Accident
+                                <span class="pull-right text-muted small">September 12, 2015</span>
+                            </div>
+                            <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                Aphasia
+                                <span class="pull-right text-muted small">September 5, 2015</span>
                             </div>
                         </div>
                     </div>
+                    <!-- /.panel-body -->
                 </div>
-                <!-- /.row -->
             </div>
         </div>
-        <!-- /#page-wrapper -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Patient Donut Chart
+                    </div>
+                    <div class="panel-body">
+                        <div id="morris-donut-chart"></div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i></i> Prioritized Clinical Data
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <table class="table table-striped table-bordered table-hover" id="priorDataTable">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <div class="row">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bell fa-fw"></i> Patient Timeline
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li class="tli">10/18/2013
+                        <span class="details">
+                            Treatment: Osteoarthritis
+                        </span>
+                    </li>
+                    <li class="tli">06/23/2014
+                        <span class="details">
+                            Consultation: Cardiovascular Risk
+                        </span>
+                    </li>
+                    <li class="tli">09/05/2015
+                        <span class="details">
+                            Dysphagia
+                        </span>
+                    </li>
+                    <li class="tli">09/05/2015
+                        <span class="details">
+                            Aphasia
+                        </span>
+                    </li>
+                    <li class="tli">09/12/2015
+                        <span class="details">
+                            Suspected cerebrovascular accident
+                        </span>
+                    </li>
+                    <li class="tli">09/13/2015
+                        <span class="details">
+                            Evacuation of subdural hematoma
+                        </span>
+                    </li>
+                </ol>
+            </div>
+        </div>
 
     </div>
-    <!-- /#wrapper -->
+</div>
 
-    <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- /.row -->
+</div>
+</div>
+<!-- /#page-wrapper -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</div>
+<!-- /#wrapper -->
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<!-- jQuery -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-    <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Magnific Popup core JS file -->
-    <script src="../dist/js/jquery.magnific-popup.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-    <script>
-      $(document).ready(function() {
-        $.getJSON("https://pure-garden-48064.herokuapp.com/patient", function(json){
-            var patientMatrix = [[json["First Name"], json["Last Name"], json["Gender"], json["Age"] + "", json["Birthday"]]];
-            var patientColumn = [{ title: "First Name" }, { title: "Last Name" }, { title: "Gender" }, { title: "Age" }, { title: "Birthday" }];
+<script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
-            $('#personalTable').DataTable( {
-                data: patientMatrix,
-                columns: patientColumn,
-                "paging":   false,
-                "ordering": false,
-                "searching": false,
-                "info": false,
-                "responsive": true
-            })
+<!-- Magnific Popup core JS file -->
+<script src="../dist/js/jquery.magnific-popup.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="../bower_components/raphael/raphael-min.js"></script>
+<script src="../bower_components/morrisjs/morris.min.js"></script>
+<script src="../js/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+<script>
+  $(document).ready(function() {
+    $.getJSON("https://pure-garden-48064.herokuapp.com/patient", function(json){
+        var patientMatrix = [[json["First Name"], json["Last Name"], json["Gender"], json["Age"] + "", json["Birthday"]]];
+        var patientColumn = [{ title: "First Name" }, { title: "Last Name" }, { title: "Gender" }, { title: "Age" }, { title: "Birthday" }];
+
+        $('#personalTable').DataTable( {
+            data: patientMatrix,
+            columns: patientColumn,
+            "paging":  false,
+            "ordering": false,
+            "searching": false,
+            "info": false,
+            "responsive": true
         })
 
-        $('.image-popup-vertical-fit').magnificPopup({
-                type: 'image',
-                closeOnContentClick: true,
-                mainClass: 'mfp-img-mobile',
-                image: {
-                    verticalFit: true
-                }
-                
-            });
+        $('#personalTable2').DataTable( {
+            data: patientMatrix,
+            columns: patientColumn,
+            "paging":  false,
+            "ordering": false,
+            "searching": false,
+            "info": false,
+            "responsive": true
+        })
+    })
 
-        $('.image-popup-fit-width').magnificPopup({
-            type: 'image',
-            closeOnContentClick: true,
-            image: {
-                verticalFit: false
-            }
-        });
+    $(document).ready(function() {
+        $.getJSON("https://pure-garden-48064.herokuapp.com/conditions", function(json) {
+            var priorMatrix = []
+            priorMatrix.push(["Traumatic intracranial subdural hematoma"]);
+            priorMatrix.push(["Chronic disease of cardiovascular system"]);
+            priorMatrix.push(["Dysphagia"]);
+            priorMatrix.push(["Aphasia"]);
+            priorMatrix.push(["Chronic osteoarthritis"]);
+            priorMatrix.push(["Migraines"]);
+        // MANUAL ORDER
+        var priorColumn = [{ title: "Condition Name" }]
+        
+        $('#priorDataTable').DataTable({
+            data: priorMatrix,
+            columns: priorColumn,
+            "responsive": true,
+            "paging":  false,
+            "searching": false,
+            "ordering": false
+        })
+    });
+    });
 
-        $('.image-popup-no-margins').magnificPopup({
-            type: 'image',
-            closeOnContentClick: true,
-            closeBtnInside: false,
-            fixedContentPos: true,
+    $('.image-popup-vertical-fit').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        mainClass: 'mfp-img-mobile',
+        image: {
+            verticalFit: true
+        }
+
+    });
+
+    $('.image-popup-fit-width').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        image: {
+            verticalFit: false
+        }
+    });
+
+    $('.image-popup-no-margins').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        closeBtnInside: false,
+        fixedContentPos: true,
             mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
             image: {
                 verticalFit: true
@@ -226,7 +356,7 @@
             }
         });
 
-    });
+});
 </script>
 </body>
 

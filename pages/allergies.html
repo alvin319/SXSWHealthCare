@@ -19,7 +19,9 @@
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
+    <link href="../css/custom.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
+    
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -134,11 +136,10 @@
                                 var temp = []
                                 var str = json.Allergies[i].AllergyDisplay;
                                 temp.push(str.substring(11, str.length));
-                                temp.push(json.Allergies[i].AllergyCode);
                                 temp.push(json.Allergies[i].Status);
                                 allergiesMatrix.push(temp)
                             }
-                            var allergiesColumn = [{ title: "Allergy" }, { title: "Allergy Code" }, { title: "Current Status" }]
+                            var allergiesColumn = [{ title: "Allergy" }, { title: "Current Status" }]
                             
                             $('#allergiesDataTable').DataTable({
                                 data: allergiesMatrix,

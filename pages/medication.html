@@ -19,7 +19,9 @@
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
+    <link href="../css/custom.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
+    
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -132,10 +134,9 @@
                             for(i = 0; i < json.Medications.length; i++) {
                                 var temp = []
                                 temp.push(json.Medications[i].PrescriptionDisplay);
-                                temp.push(json.Medications[i].PrescriptionCode);
                                 medicationMatrix.push(temp)
                             }
-                            var medicationColumn = [{ title: "Prescription Name" }, { title: "Prescription Code" }]
+                            var medicationColumn = [{ title: "Prescription Name" }]
                             
                             $('#medicationDataTable').DataTable({
                                 data: medicationMatrix,
